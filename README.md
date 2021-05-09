@@ -43,38 +43,24 @@ A Middleware authentication mechanism is established before all APIs execution, 
 This can be found in 'auth' folder in verifyToken.js file.
 
 1)API for employee Registration (SignUp)
-		curl --location --request POST 'localhost:3000/expenses/signup' \--header 'Content-Type: application/json' \--data-raw '{"name" : "Rekha Sharma", "mobile"  : 9493522249, "email" :"rekha@gmail.com","password" : "rekha@39"}'
-
+		curl --location --request POST 'http://54.155.33.247:3000/expenses/signup' \--header 'Content-Type: application/json' \--data-raw '{"name" : "Rekha Sharma","mobile"  : 9493522249,"email" :"rekha@gmail.com", "password" : "rekha@39" }'
 
 
 2)API for employee LogIn
-		curl --location --request POST 'localhost:3000/expenses/login' \ --header 'Content-Type: application/json' \ --data-raw '{"email" :"rekha@gmail.com", "password" : "rekha@39" }'
+		curl --location --request POST 'http://54.155.33.247:3000/expenses/login' \--header 'Content-Type: application/json' \--data-raw '{
+		"email" :"rekha@gmail.com", "password" : "rekha@39"   }'
 
-3)API for Creating a expense
-		curl --location --request POST 'localhost:3000/expenses/' \--header 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOTgwYjY5YzExNjg3MjgyYWNkZGY4ZSIsImlhdCI6MTYyMDU3NzE0NiwiZXhwIjoxNjIwNjYzNTQ2fQ.Q-k99H9fVinbbmNEgrqej-NjMp5QUS6k6QyuCvVHJ9A' \--header 'Content-Type: application/json' \--data-raw '{"submitDate": "24/01/2019","employeeId": "nfhddk33","itemType": "Expense","type": "furniture","amount": { "value": 10200, "currency": "INR" },"description": "New furniture","status": "Pending" }'
+3)API for Creating an expense
+		curl --location --request POST 'http://54.155.33.247:3000/expenses/' \--header 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOTgyNDYxZDQ3ZjBjNzQ5YTA2NmM0NSIsImlhdCI6MTYyMDU4MzY0MCwiZXhwIjoxNjIwNjcwMDQwfQ.IXglV8IyDjWHLoMWUyMmrATGGC96MwyN1CdpU-phLOU' \--header 'Content-Type: application/json' \
+--data-raw '{"submitDate": "24/02/2021","employeeId": "hdhk33dssngh","itemType": "Expense","type": "Home Loan","amount": { "value": 10200, "currency": "INR" },
+"description": "New home","status": "Pending" }'
 
 4)API for Getting all the expense 
-		curl --location --request GET 'localhost:3000/expenses/' \--header 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOTgwYjY5YzExNjg3MjgyYWNkZGY4ZSIsImlhdCI6MTYyMDU3NzE0NiwiZXhwIjoxNjIwNjYzNTQ2fQ.Q-k99H9fVinbbmNEgrqej-NjMp5QUS6k6QyuCvVHJ9A'
+		curl --location --request GET 'http://54.155.33.247:3000/expenses/' \--header 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOTgyNDYxZDQ3ZjBjNzQ5YTA2NmM0NSIsImlhdCI6MTYyMDU4MzY0MCwiZXhwIjoxNjIwNjcwMDQwfQ.IXglV8IyDjWHLoMWUyMmrATGGC96MwyN1CdpU-phLOU'
 
 5)API for Updating an expense by expenseID
-		curl --location --request PATCH 'localhost:3000/expenses/' \
-		--header 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOTgwYjY5YzExNjg3MjgyYWNkZGY4ZSIsImlhdCI6MTYyMDU3NzE0NiwiZXhwIjoxNjIwNjYzNTQ2fQ.Q-k99H9fVinbbmNEgrqej-NjMp5QUS6k6QyuCvVHJ9A' \
-		--header 'Content-Type: application/json' \
-		--data-raw '{ "expenseId" : "60980ba4c11687282acddf8f", "dataToUpdate" :
-        {
-            "submitDate": "9/12/2019",
-            "itemType": "Expense",
-            "type": "Gas",
-            "amount": { "value": 1000, "currency": "INR" },
-            "description": "",
-            "status": ""
-        }
-}'
-
+		curl --location --request PATCH 'http://54.155.33.247:3000/expenses/' \--header 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOTgyNDYxZDQ3ZjBjNzQ5YTA2NmM0NSIsImlhdCI6MTYyMDU4MzY0MCwiZXhwIjoxNjIwNjcwMDQwfQ.IXglV8IyDjWHLoMWUyMmrATGGC96MwyN1CdpU-phLOU' \--header 'Content-Type: application/json' \--data-raw '{"expenseId" : "609826a8ad192d75019a1918","dataToUpdate" :{"submitDate": "9/12/2019","itemType": "Expense","type": "Gas","amount": { "value": 1000, "currency": "INR" },"description": "","status": "" } }'
 
 5)API for Deleting an expense by expenseId
-		curl --location --request DELETE 'localhost:3000/expenses/' \
-		--header 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOTgwYjY5YzExNjg3MjgyYWNkZGY4ZSIsImlhdCI6MTYyMDU3NzE0NiwiZXhwIjoxNjIwNjYzNTQ2fQ.Q-k99H9fVinbbmNEgrqej-NjMp5QUS6k6QyuCvVHJ9A' \
-		--header 'Content-Type: application/json' \
-		--data-raw '{"expenseId" : "60980ba4c11687282acddf8f" }'
-
+ 		curl --location --request DELETE 'http://54.155.33.247:3000/expenses/' \--header 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwOTgyNDYxZDQ3ZjBjNzQ5YTA2NmM0NSIsImlhdCI6MTYyMDU4MzY0MCwiZXhwIjoxNjIwNjcwMDQwfQ.IXglV8IyDjWHLoMWUyMmrATGGC96MwyN1CdpU-phLOU' \--header 'Content-Type: application/json' \--data-raw '{ "expenseId" : "60982514d47f0c749a066c46" }'
+		
